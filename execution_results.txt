@@ -1,0 +1,76 @@
+This is an additional verification run. Its execution times and break-even point may differ from those reported in the submitted document because performance varies between runs
+
+======================================================================
+TESTING SEARCH CORRECTNESS
+======================================================================
+
+Test 1: Linear search on unsorted data
+  linear_search([7, 2, 9, 1, 5, 13, 3, 11], 9) = 2
+  Expected: 2, Got: 2, PASS
+
+Test 2: Linear search - item not found
+  linear_search([7, 2, 9, 1, 5, 13, 3, 11], 99) = -1
+  Expected: -1, Got: -1, PASS
+
+Test 3: Binary search iterative on sorted data
+  binary_search_iterative([1, 3, 5, 7, 9, 11, 13, 15], 9) = 4
+  Expected: 4, Got: 4, PASS
+
+Test 4: Binary search iterative - item not found
+  binary_search_iterative([1, 3, 5, 7, 9, 11, 13, 15], 10) = -1
+  Expected: -1, Got: -1, PASS
+
+Test 5: Binary search recursive on sorted data
+  binary_search_recursive([1, 3, 5, 7, 9, 11, 13, 15], 13) = 6
+  Expected: 6, Got: 6, PASS
+
+Test 6: Binary search recursive - item not found
+  binary_search_recursive([1, 3, 5, 7, 9, 11, 13, 15], 8) = -1
+  Expected: -1, Got: -1, PASS
+
+======================================================================
+BENCHMARKING SEARCH ALGORITHMS
+======================================================================
+
+Dataset: Unsorted Customer IDs (100K)
+----------------------------------------------------------------------
+  Linear Search:              3.1686 ms per search
+  Time to sort data:          14.67 ms (one-time cost)
+  Binary Search (Iterative):  0.0046 ms per search
+  Binary Search (Recursive):  0.0086 ms per search
+  Binary speedup:             693.28x faster than linear
+
+Dataset: Pre-sorted Product Catalog (50K)
+----------------------------------------------------------------------
+  Linear Search:              1.8500 ms per search
+  Binary Search (Iterative):  0.0036 ms per search
+  Binary Search (Recursive):  0.0067 ms per search
+  Binary speedup:             514.56x faster than linear
+
+Dataset: Small Config Settings (500)
+----------------------------------------------------------------------
+  Linear Search:              0.0167 ms per search
+  Time to sort data:          1.08 ms (one-time cost)
+  Binary Search (Iterative):  0.0024 ms per search
+  Binary Search (Recursive):  0.0031 ms per search
+  Binary speedup:             6.87x faster than linear
+
+Dataset: Dictionary Words (10K)
+----------------------------------------------------------------------
+  Linear Search:              0.2933 ms per search
+  Binary Search (Iterative):  0.0042 ms per search
+  Binary Search (Recursive):  0.0042 ms per search
+  Binary speedup:             69.82x faster than linear
+
+======================================================================
+PREPROCESSING COST ANALYSIS
+======================================================================
+
+Dataset: Customer IDs (100,000 unsorted entries)
+One-time sort cost: 17.18 ms
+Linear search time: 2.9654 ms per search
+Binary search time: 0.0042 ms per search
+Time saved per search: 2.9611 ms
+
+Break-even point: 6 searches
+After 6 searches, sorting + binary search becomes faster
